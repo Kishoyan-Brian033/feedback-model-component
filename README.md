@@ -1,6 +1,6 @@
 # Feedback Modal Component
 
-![Screenshot](/Screenshot.png)
+![Screenshot](./Screenshot.png)
 
 ## Project Overview
 
