@@ -3,7 +3,7 @@
 
 # Feedback Modal Component
 
-![Screenshot](/src/Screenshot-active.png)
+
 
 ## Project Overview
 
