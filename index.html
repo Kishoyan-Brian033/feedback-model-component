@@ -2,41 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVG
-    RNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Feedback Modal Component - FrontendPro Challenge</title>
-    
+    <title>FrontendPro Feedback</title>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <!-- Write your HTML here -->
-     <button class="feedback-btn">Feedback</button>
-       <div class="container active" id="container">
-             <h1 class="head">How likely are you to recommend FrontendPro to someone you know?</h1>
-             <div class="rating" id="rating">
-              <div class="rate"><span>1</span></div>
-              <div class="rate"><span>2</span></div>
-              <div class="rate"><span>3</span></div>
-              <div class="rate"><span>4</span></div>
-              <div class="rate"><span>5</span></div>
-              <div class="rate"><span>6</span></div>
-              <div class="rate"><span>7</span></div>
-              <div class="rate"><span>8</span></div>
-              <div class="rate"><span>9</span></div>
-              <div class="rate"><span>10</span></div>
-             </div>
-             <div class="text">
-              <span>Not likely at all</span>
-              <span>Extremely likely</span>
-             </div>
-             <div class="buttons">
-             <button class="btn-c" id="cancle">Cancle</button>
-             <button class="btn-b" id="submitt">Submit</button>
-            </div>
-            <i class="fa-solid fa-times fa-2x" id="close"></i>
-       </div>
-    <script src="/src/script.js"></script>
+  
+    <button class="feedback-trigger">Give Feedback</button>
+    <div id="feedback-confirmation"></div>
+
+    <!-- START modal-overlay -->
+    <div class="modal-overlay">
+      <!-- START modal -->
+      <div class="modal">
+        <h2>
+          How likely are you to recommend FrontendPro<br />to someone you know?
+        </h2>
+
+        <!-- START rating-scale -->
+        <div class="rating-scale">
+          <div class="numbers">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+          </div>
+          <div class="labels">
+            <span>Not likely at all</span>
+            <span>Extremely Likely</span>
+          </div>
+        </div>
+        <!-- END rating-scale -->
+
+        <!-- START modal-actions -->
+        <div class="modal-actions">
+          <button class="cancel-btn">Cancel</button>
+          <button class="submit-btn" disabled>Submit</button>
+        </div>
+        <!-- END modal-actions -->
+      </div>
+      <!-- END modal -->
+    </div>
+    <!-- END modal-overlay -->
+
+    <script src="src/script.js"></script>
   </body>
 </html>

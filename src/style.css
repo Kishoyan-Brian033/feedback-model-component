@@ -1,20 +1,157 @@
-* {
-  padding: 0;
+/**
+ * @file style.css
+ * @description CSS styles for the feedback modal.
+ * @author Your Name
+ * @date 2023-10-01
+ */
+ body {
   margin: 0;
-  box-sizing: border-box;
-}
-
-/* write your CSS here */
-body{
-  background: rgb(224, 217, 217);
-  color: white;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background-color: #d0cbf3;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  height: 100vh;
+  color: #352a68;
 }
 
-.feedback-btn {
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 24, 50, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: #1a1832;
+  padding: 28px;
+  border-radius: 12px;
+  width: 440px;
+  box-shadow: 0 4px 20px rgba(26, 24, 50, 0.15);
+  border: 1px solid #1e2031;
+}
+
+.modal h2 {
+  font-size: 18px;
+  color: #cbccd3;
+  margin-bottom: 24px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.rating-scale {
+  margin: 20px 0 28px;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 8px;
+}
+
+.numbers span {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15%;
+  cursor: pointer;
+  font-weight: 500;
+  color: #9093a8;
+  background-color: #1b1a34;
+  transition: all 0.15s;
+  font-size: 14px;
+  border: 1px solid #1f1e38;
+}
+
+.numbers span:hover {
+  background: #1b1933;
+  border-color: #9093a8;
+  border: 1px solid #9093a8;
+  font-size: 22px;
+}
+
+.numbers span.selected {
+  background: #9093a8;
+  color: white;
+  border-color: #1b1933;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #737389;
+  padding: 0 6px;
+  margin-top: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 14px;
+  border: 1px solid transparent;
+}
+
+.cancel-btn {
+  background: #1b1933;
+  color: #d0cbf3;
+  border: 1px solid #340bea;
+  margin: 0 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 12px 24px;
+}
+
+.submit-btn {
+  background: #7a58f4;
+  color: #cbccd3;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.submit-btn:hover {
+  background: #6a47f3;
+}
+
+.submit-btn:disabled {
+  background: #7a58f4;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.feedback-trigger {
   background: #7a58f4;
   color: white;
   border: none;
@@ -27,95 +164,20 @@ body{
   box-shadow: 0 2px 8px rgba(122, 88, 244, 0.3);
 }
 
-.feedback-btn:hover {
+.feedback-trigger:hover {
   background: #6a47f3;
 }
 
-.container{
-
-  background-color:  #1a1832;
-  border-radius: 10px;
-  padding: 20px;
-  width: 90%;
-  max-width: 450px;
-  text-align: center;
-  font-size: 18px;
-  
-}
-.head{
-  margin: 5px;
-  font-size: 17px;
-  
-}
-.active.container{
-  visibility: hidden;
-}
-.rating{
-  display: flex;
-  padding: 20px 0;
-  align-items: center;
-  justify-content: center;
-}
-.rate{
-  cursor: pointer;
-  padding: 10px;
-  margin: 10px 5px;
-  background-color: #1b1a34;
-  border-radius: 10px;
-  border: 2px solid #1f1e38;
-  height: 36px;
-  width: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-}
-.rate:hover{
-  background: rgb(17,17,43);
-  border: 1px solid #9093a8;
-  transition: all 300ms ease-in-out;
-  font-size: 22px;
-}
-.buttons{
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
-
-}
-.btn-c{
-   background: #1a1832;
-   color: white;
-   border: 1px solid #352a68;
-   padding: 10px 20px;
-   border-radius: 5px;
-   cursor: pointer;
-   transition: all 300ms ease-in-out;
-
-}
-.btn-b{
-  background: #7a58f4;
-  color: white;
+#feedback-confirmation {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1832;
+  color: #cbccd3;
   padding: 10px 20px;
-  border: 1px solid #7a58f4;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 300ms ease-in-out;
-
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(26, 24, 50, 0.3);
+  border: 1px solid #b5b6c0;
+  display: none;
 }
-.text{
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  margin-top: 4px;
- color: #737389;
-}
-#close{
-  position: absolute;
-  top: 30px;
-  color: wheat;
-  left: 30px;
-  cursor: pointer;
-}
-
-
-
