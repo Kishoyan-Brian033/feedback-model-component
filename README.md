@@ -3,7 +3,7 @@
 ## Live Demo
 ➡[View live site]](https://feedback-model-component-800oj0tr1-brians-projects-bcfd072c.vercel.app)
 
-![Screenshot](/feedback-model-component/Screenshot.png)
+![Screenshot](/Screenshot 2025-04-14 124958.png)
 
 
 
