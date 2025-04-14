@@ -1,0 +1,121 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* write your CSS here */
+body{
+  background: rgb(224, 217, 217);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+}
+
+.feedback-btn {
+  background: #7a58f4;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s;
+  box-shadow: 0 2px 8px rgba(122, 88, 244, 0.3);
+}
+
+.feedback-btn:hover {
+  background: #6a47f3;
+}
+
+.container{
+
+  background-color:  #1a1832;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  font-size: 18px;
+  
+}
+.head{
+  margin: 5px;
+  font-size: 17px;
+  
+}
+.active.container{
+  visibility: hidden;
+}
+.rating{
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+  justify-content: center;
+}
+.rate{
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 5px;
+  background-color: #1b1a34;
+  border-radius: 10px;
+  border: 2px solid #1f1e38;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.rate:hover{
+  background: rgb(17,17,43);
+  border: 1px solid #9093a8;
+  transition: all 300ms ease-in-out;
+  font-size: 22px;
+}
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+
+}
+.btn-c{
+   background: #1a1832;
+   color: white;
+   border: 1px solid #352a68;
+   padding: 10px 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: all 300ms ease-in-out;
+
+}
+.btn-b{
+  background: #7a58f4;
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid #7a58f4;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+
+}
+.text{
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 4px;
+ color: #737389;
+}
+#close{
+  position: absolute;
+  top: 30px;
+  color: wheat;
+  left: 30px;
+  cursor: pointer;
+}
+
+
+
