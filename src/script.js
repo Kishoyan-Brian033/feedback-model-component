@@ -1,5 +1,6 @@
-// write your JavaScript here
 document.addEventListener("DOMContentLoaded", function () {
+    // Opens the modal overlay and disables body scroll.
+    const closeBtn = document.querySelector(".close-btn");
     const overlay = document.querySelector(".modal-overlay");
     const trigger = document.querySelector(".feedback-trigger");
     const cancelBtn = document.querySelector(".cancel-btn");
@@ -9,16 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
   
     let selectedRating = null;
   
-    // Check for existing feedback when page loads
     checkSavedFeedback();
   
-    // Open modal
+    closeBtn.addEventListener("click", closeModal);
+  
+    /**
+     * @function openModal
+     * @description Opens the modal overlay and disables body scroll.
+     */
     trigger.addEventListener("click", () => {
       overlay.classList.add("active");
       document.body.style.overflow = "hidden";
     });
   
-    // Close modal
+    /**
+     * @function closeModal
+     * @description Closes the modal and resets the selected rating.
+     */
     function closeModal() {
       overlay.classList.remove("active");
       document.body.style.overflow = "";
@@ -29,12 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   
-    // Save feedback to LocalStorage
+    /**
+     * @function saveFeedback
+     * @description Saves the feedback rating to local storage and updates the feedback history.
+     */
     function saveFeedback(rating) {
       localStorage.setItem("frontendProFeedback", rating);
       localStorage.setItem("feedbackDate", new Date().toISOString());
   
-      // Also store in feedback history
+      /**
+       * @constant {Array} feedbackHistory - Array of feedback history objects.
+       * @property {number} rating - The rating given by the user.
+       */
       const feedbackHistory = JSON.parse(
         localStorage.getItem("feedbackHistory") || "[]"
       );
@@ -47,7 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
       showConfirmation(`Thank you! Your ${rating}/10 rating has been saved.`);
     }
   
-    // Check for saved feedback
+    /**
+     * * @function checkSavedFeedback
+     * @description Checks if there is saved feedback in local storage and displays it.
+     */
     function checkSavedFeedback() {
       const savedRating = localStorage.getItem("frontendProFeedback");
       if (savedRating) {
@@ -57,7 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
           `Your previous rating: ${savedRating}/10 (${formattedDate})`
         );
   
-        // Highlight the saved rating
+        /**
+         * * @constant {NodeList} ratingNumbers - NodeList of rating number elements.
+         * @description Selects all span elements within the numbers class.
+         */
         ratingNumbers.forEach((number) => {
           if (number.textContent === savedRating) {
             number.classList.add("selected");
@@ -66,7 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   
-    // Show confirmation message
+    /**
+     *
+     * @function showConfirmation
+     * @description Displays a confirmation message for a specified duration.
+     */
     function showConfirmation(message) {
       confirmation.textContent = message;
       confirmation.style.display = "block";
@@ -82,7 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 3000);
     }
   
-    // Close handlers
+    /**
+     * @function handleKeyPress
+     * @description Handles key press events for the modal overlay.
+     */
     cancelBtn.addEventListener("click", closeModal);
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) {
@@ -90,7 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   
-    // Rating selection
+    /**
+     * * @function handleRatingSelection
+     * @description Handles the selection of rating numbers and enables the submit button.
+     */
     ratingNumbers.forEach((number) => {
       number.addEventListener("click", () => {
         ratingNumbers.forEach((num) => num.classList.remove("selected"));
@@ -100,14 +130,20 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   
-    // Submit feedback
+    /**
+     * * @function handleSubmit
+     * @description Handles the submission of feedback and closes the modal.
+     */
     submitBtn.addEventListener("click", () => {
       if (selectedRating) {
         saveFeedback(selectedRating);
         closeModal();
       }
     });
-  
+    /**
+     * @function handleEscapeKey
+     * @description Handles the Escape key press to close the modal overlay.
+     */
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && overlay.classList.contains("active")) {
         closeModal();
