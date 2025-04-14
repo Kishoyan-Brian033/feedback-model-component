@@ -1,6 +1,6 @@
 # Feedback Modal Component
 
-![Screenshot](/Screenshot 2025-04-14 124958.png)
+
 
 ## Project Overview
 
